@@ -4,7 +4,7 @@
 
 //do i store squares data as an array or assign them all separated variables or 9 separate arrays the values are pushed into?!
 
-var board = [ ] //attribute of the game object.  at begining of game, will be empty/null
+ //attribute of the game object.  at begining of game, will be empty/null
 
 
 // Have the game be able to identify what a "win" is
@@ -30,7 +30,22 @@ var board = [ ] //attribute of the game object.  at begining of game, will be em
 
 function TicTacToeGameBoard(){
   this.turnCounter = 0;
+  this.board = new Array(9);
 }
+
+// when i click on a square, an X appears
+TicTacToeGameBoard.prototype.bindX = function bindX(){
+  $('.box').click(function() {
+      $('.box').append('X')
+      });
+}
+
+TicTacToeGameBoard.prototype.bindO = function bindO(){
+  $('.box').click(function() {
+      $('.box').append('O')
+      });
+}
+//HOW TO MAKE IT RECOGNIZE WHICH BOX I CLICK. OR DO I NEED ONE FOR EACH//
 
 //something that will have an event listener for the click, will assign value into square
 TicTacToeGameBoard.prototype.makeMove =  function makeMove(turn, index){
@@ -80,20 +95,25 @@ TicTacToeGameBoard.prototype.checkWin = function checkWin(){
       console.log('Player 1 wins!')
   } else if (this.board[2]==='O' && this.board[4]==='0' && this.board[6]==='0'){
       console.log('Player 2 wins!')
-}
+  }
+};
 
-
-
+// recognize when I click on boxes/whos turn it is
 
 //probably will need a constructor function that sets up a new game each time.
 
-function Game(){
+//function Game(){
   //can start
   //can play
   //make function calls off of the game board.
-  ash.turnCounter
-}
-var game = new Gameboard
+//  ash.turnCounter
+//}
+var game = new TicTacToeGameBoard
+
+game.makeMove()
+game.checkWin()
+game.bindX()
+
 
 //will need to be able to give the option to start a new game when one finishes
 
@@ -107,5 +127,5 @@ var game = new Gameboard
 
 
 
-var first = $('#first-player');
-var second = $('#second-player');
+//var first = $('#first-player');
+//var second = $('#second-player');

@@ -10,6 +10,7 @@ body {
   width: 100%;
   align-items: center;
   display: inline-block;
+
 }
 
 #left-page-column{
@@ -27,39 +28,19 @@ body {
   display: inline-block;
 }
 
-.left-column{
-height: 200px;
-width: 200px;
-font-size: 50px;
+.column{
 display: inline-block;
-
-}
-.center-column{
-height: 200px;
-width: 200px;
-font-size: 50px;
-display: inline-block;
-
-}
-.right-column{
-height: 200px;
-width: 200px;
-font-size: 50px;
-display: inline-block;
-
+text-align: center;
+top: auto;
 }
 
-.top-square{
+.inner-column{
+  display: inline-block;
+}
+
+.box{
+  width: 100px;
+  height:100px;
   border: 2px solid hotpink;
   text-align: center;
-}
-
-.center-square{
-border: 2px solid hotpink;
-text-align: center;
-}
-
-.bottom-square{
-border: 2px solid hotpink;
-text-align: center;
 }
