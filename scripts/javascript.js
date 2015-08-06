@@ -35,16 +35,16 @@ function TicTacToeGameBoard(){
 
 // when i click on a square, an X appears
 TicTacToeGameBoard.prototype.bindX = function bindX(){
-  $('.box').click(function() {
-      $('.box').append('X')
-      });
+  $('.box').on('click', (function() {
+      $(this.'.box').append('X')
+    }));
 }
 
-TicTacToeGameBoard.prototype.bindO = function bindO(){
+/*TicTacToeGameBoard.prototype.bindO = function bindO(){
   $('.box').click(function() {
       $('.box').append('O')
-      });
-}
+    });
+}*/
 //HOW TO MAKE IT RECOGNIZE WHICH BOX I CLICK. OR DO I NEED ONE FOR EACH//
 
 //something that will have an event listener for the click, will assign value into square
@@ -98,7 +98,32 @@ TicTacToeGameBoard.prototype.checkWin = function checkWin(){
   }
 };
 
-// recognize when I click on boxes/whos turn it is
+// render a new board (function that will pass num row and num column)
+// like cat example, will first create boxes, then will use box to make rows/comlumns
+
+TicTacToeGameBoard.prototype.makeBox = function makeBox(){
+  var gameBox = $('<div>').addClass('box');
+  return gameBox;
+}
+
+TicTacToeGameBoard.prototype.makeBoard = function makeBoard(row, col){
+  var gameBoard = $('<div>').addClass('game-board');
+  var boardRow;
+  var newBox;
+  for (var i = 0; i < col; i++){
+    boardRow = $('<div>').addClass('board-row');
+    for (var j = 0; j < row; j++) {
+      newBox = this.makeBox();
+      boardRow.append(newBox);
+    }
+    gameBoard.append(boardRow);
+  }
+  $('#center-section').append(gameBoard);
+};
+
+
+
+
 
 //probably will need a constructor function that sets up a new game each time.
 
@@ -108,12 +133,12 @@ TicTacToeGameBoard.prototype.checkWin = function checkWin(){
   //make function calls off of the game board.
 //  ash.turnCounter
 //}
-var game = new TicTacToeGameBoard
+var game = new TicTacToeGameBoard;
 
 game.makeMove()
 game.checkWin()
 game.bindX()
-
+game.makeBoard( row, col)
 
 //will need to be able to give the option to start a new game when one finishes
 

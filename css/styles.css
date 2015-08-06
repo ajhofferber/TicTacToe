@@ -24,11 +24,11 @@ body {
 }
 
 
-#game-board{
+.game-board{
   display: inline-block;
 }
 
-.column{
+.board-row{
 display: inline-block;
 text-align: center;
 top: auto;
