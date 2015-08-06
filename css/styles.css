@@ -2,5 +2,64 @@ body {
   background-color: darkslategrey;
   color: navajowhite;
   font-family: futura;
+  font-weight: lighter;
+}
+
+
+#contents{
+  width: 100%;
+  align-items: center;
+  display: inline-block;
+}
+
+#left-page-column{
+    width: 100px;
+    font-size: 15px;
+}
+
+
+#header{
   text-align: center;
+}
+
+
+#game-board{
+  display: inline-block;
+}
+
+.left-column{
+height: 200px;
+width: 200px;
+font-size: 50px;
+display: inline-block;
+
+}
+.center-column{
+height: 200px;
+width: 200px;
+font-size: 50px;
+display: inline-block;
+
+}
+.right-column{
+height: 200px;
+width: 200px;
+font-size: 50px;
+display: inline-block;
+
+}
+
+.top-square{
+  border: 2px solid hotpink;
+  text-align: center;
+}
+
+.center-square{
+border: 2px solid hotpink;
+text-align: center;
+}
+
+.bottom-square{
+border: 2px solid hotpink;
+text-align: center;
 }
