@@ -5,42 +5,43 @@ body {
   font-weight: lighter;
 }
 
-
-#contents{
-  width: 100%;
-  align-items: center;
+.column{
   display: inline-block;
-
 }
-
-#left-page-column{
-    width: 100px;
-    font-size: 15px;
-}
-
 
 #header{
   text-align: center;
 }
 
+#left-page-column{
+  width: 20%;
 
-.game-board{
-  display: inline-block;
 }
 
+#center-section{
+  width: 60%;
+
+}
+
+#right-page-column{
+  width: 20%;
+
+}
+
+
+
+
 .board-row{
-display: inline-block;
+display: block;
 text-align: center;
 top: auto;
 }
 
-.inner-column{
-  display: inline-block;
-}
-
 .box{
-  width: 100px;
-  height:100px;
+  display: inline-block;
+  width: 175px;
+  height:175px;
   border: 2px solid hotpink;
   text-align: center;
+  overflow: hidden;
 }

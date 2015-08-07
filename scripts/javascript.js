@@ -1,16 +1,6 @@
 //Thoughts for JavaScript
 
 
-
-//do i store squares data as an array or assign them all separated variables or 9 separate arrays the values are pushed into?!
-
- //attribute of the game object.  at begining of game, will be empty/null
-
-
-// Have the game be able to identify what a "win" is
-
-// assign X or O to the player 1 or player 2/computer
-
 // have the computer know the different between player 2 option or computer player option
 
 // have the computer be able to automatically alternate between whos turn it is
@@ -19,50 +9,57 @@
 
 // have the computer recognize when the board is full and no one has won and call it a tie
 
-// set up a 'play' button that they can push to initialize everything, like render the grid and allow them to select 'X' or 'O'
+/*
+var whosFirst = prompt('Hi player 1, what is your name?')
+var whosSecond = prompt('Hi player 2, what is your name?')
 
-
-
-
+var first = $('#first-player').innerHTML(whosFirst);
+var second = $('#second-player').innerHTML(whosSecond);
+*/
 //functions
 
-//constructor function that runs the game
-
+//constructor function that holds the game's abilities
 function TicTacToeGameBoard(){
-  this.turnCounter = 0;
+  this.turnCounter = 1;
   this.board = new Array(9);
+
 }
 
 // when i click on a square, an X appears
-TicTacToeGameBoard.prototype.bindX = function bindX(){
-  $('.box').on('click', (function() {
-      $(this.'.box').append('X')
-    }));
+TicTacToeGameBoard.prototype.playerInfo = function playerInfo(){
+  var whosFirst = prompt('Hi player 1, what is your name?')
+  var whosSecond = prompt('Hi player 2, what is your name?')
+
+  var first = $('#first-player').text(whosFirst);
+  var second = $('#second-player').text(whosSecond);
 }
 
-/*TicTacToeGameBoard.prototype.bindO = function bindO(){
-  $('.box').click(function() {
-      $('.box').append('O')
-    });
-}*/
-//HOW TO MAKE IT RECOGNIZE WHICH BOX I CLICK. OR DO I NEED ONE FOR EACH//
 
 //something that will have an event listener for the click, will assign value into square
-TicTacToeGameBoard.prototype.makeMove =  function makeMove(turn, index){
-    if (this.board[index] === undefined){
-        if (turn%2 === 0){
-            this.board[index] = 'O';
-        }else {
-            this.board[index] = 'X';
-        }
-        this.turnCounter++;
+TicTacToeGameBoard.prototype.makeMove =  function makeMove(cell, index){
+  if (this.board[index] === undefined){
+    if (this.turnCounter%2 === 0){
+      this.board[index] = 'O';
+      cell.text('O');
     } else {
-        console.log('TRY AGAIN NO room here')
+      this.board[index] = 'X';
+      cell.text('X');
     }
-};
-//functions to check for each of the win states (column, row, diagonal)
+        this.turnCounter++;
+        console.log(this.turnCounter)
+    };
+    if(this.board[index] !== undefined){
+      console.log(this.board[index]);
+      console.log('NOT HERE');
+    }
+    return this.board;
 
-TicTacToeGameBoard.prototype.checkWin = function checkWin(){
+};
+
+//function to check for each of the win states (column, row, diagonal)
+
+
+TicTacToeGameBoard.prototype.checkWin = function checkWin(makeMove){
   if (this.board[0]==='X' && this.board[1]==='X' && this.board[2]==='X'){
     console.log('Player 1 wins!')
   } else if (this.board[0]==='O' && this.board[1]==='O' && this.board[2]==='O'){
@@ -98,47 +95,94 @@ TicTacToeGameBoard.prototype.checkWin = function checkWin(){
   }
 };
 
-// render a new board (function that will pass num row and num column)
-// like cat example, will first create boxes, then will use box to make rows/comlumns
+/*
+//theoretically, attacted a binder to the game box that will make an O
+TicTacToeGameBoard.prototype.bindX = function bindX(gameBox){
+  gameBox.on('click', (function() {
+      gameBox.append('X')
+    }));
+}
+//theoretically, attacted a binder to the game box that will make an O
+TicTacToeGameBoard.prototype.bindO = function bindO(gameBox){
+  gameBox.on('click', (function() {
+      gameBox.append('O')
+    }));
+}
+*/
 
-TicTacToeGameBoard.prototype.makeBox = function makeBox(){
-  var gameBox = $('<div>').addClass('box');
-  return gameBox;
+// like cat example, will first create boxes, then will use box to make rows/comlumns
+TicTacToeGameBoard.prototype.makeCell = function makeCell(cellIndex){
+  var gameCell = $('<div>').addClass('box');
+      gameCell.attr('id', cellIndex);
+
+    return gameCell;
 }
 
+// render a new board (function that will pass num row and num column)
 TicTacToeGameBoard.prototype.makeBoard = function makeBoard(row, col){
   var gameBoard = $('<div>').addClass('game-board');
   var boardRow;
   var newBox;
-  for (var i = 0; i < col; i++){
+    var cellIndex = 0;
+  for (var i = 0; i < row; i++){
     boardRow = $('<div>').addClass('board-row');
-    for (var j = 0; j < row; j++) {
-      newBox = this.makeBox();
+    for (var j = 0; j < col; j++) {
+      newBox = this.makeCell(cellIndex);
+      cellIndex++;
       boardRow.append(newBox);
     }
     gameBoard.append(boardRow);
   }
   $('#center-section').append(gameBoard);
+
+  var scope = this;
+    $('.box').on('click', function(e){
+        var cell = $(e.target);
+          scope.makeMove(  cell,  cell.attr('id')   )
+        })
+      };
+
+
+
+
+TicTacToeGameBoard.prototype.init = function init(domNode){
+  this.gameBoard = this.makeBoard(this.width, this.height);
+  domNode.append(this.gameBoard);
 };
 
 
 
 
 
-//probably will need a constructor function that sets up a new game each time.
 
-//function Game(){
+
   //can start
   //can play
   //make function calls off of the game board.
 //  ash.turnCounter
 //}
-var game = new TicTacToeGameBoard;
-
+//var game = new TicTacToeGameBoard;
+/*
 game.makeMove()
 game.checkWin()
 game.bindX()
-game.makeBoard( row, col)
+game.makeBoard( 3, 3)
+var game;
+*/
+
+
+$(document).ready(function(){
+  var game = new TicTacToeGameBoard();
+  game.makeBoard(4,4);
+  game.playerInfo();
+
+
+  game.init( $('#contents') );
+});
+
+
+
+
 
 //will need to be able to give the option to start a new game when one finishes
 
@@ -149,8 +193,3 @@ game.makeBoard( row, col)
 //function to render board, based on how many columns or rows you want
 
 //assign distinct values to each of the players so that the computer can recognize
-
-
-
-//var first = $('#first-player');
-//var second = $('#second-player');
