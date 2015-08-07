@@ -17,8 +17,10 @@
 function TicTacToeGameBoard(){
   this.turnCounter = 1;
   this.board = new Array(9);
-
+  var gameBoard = this.board;
 }
+
+
 
 // when i click on a square, an X appears
 TicTacToeGameBoard.prototype.playerInfo = function playerInfo(){
@@ -31,51 +33,53 @@ TicTacToeGameBoard.prototype.playerInfo = function playerInfo(){
 
 
 
-
 //function to check for each of the win states (column, row, diagonal)
 
-TicTacToeGameBoard.prototype.checkWin = function checkWin(makeMove){
-  if (this.board[0]==='X' && this.board[1]==='X' && this.board[2]==='X'){
-    console.log('Player 1 wins!')
+TicTacToeGameBoard.prototype.checkWin = function checkWin(gameBoard){
+
+   if (this.board[0]==='X' && this.board[1]==='X' && this.board[2]==='X'){
+      alert('Player 1 wins!');
   } else if (this.board[0]==='O' && this.board[1]==='O' && this.board[2]==='O'){
-    console.log('Player 2 wins!')
+      alert('Player 2 wins!');
   } else if (this.board[3]==='X' && this.board[4]==='X' && this.board[5]==='X'){
-    console.log('Player 1 wins!')
+      alert('Player 1 wins!');
   } else if (this.board[3]==='O' && this.board[4]==='O' && this.board[5]==='O'){
-    console.log('Player 2 wins!')
+      alert('Player 2 wins!');
   } else if (this.board[6]==='X' && this.board[7]==='X' && this.board[8]==='X'){
-    console.log('Player 1 wins!')
+      alert('Player 1 wins!');
   } else if (this.board[6]==='O' && this.board[7]==='O' && this.board[8]==='O'){
-    console.log('Player 2 wins!')
+      alert('Player 2 wins!');
   } else if (this.board[0]==='X' && this.board[3]==='X' && this.board[6]==='X'){
-    console.log('Player 1 wins!')
+      alert('Player 1 wins!');
   } else if (this.board[0]==='O' && this.board[3]==='O' && this.board[6]==='O'){
-    console.log('Player 2 wins!')
+      alert('Player 2 wins!');
   } else if (this.board[1]==='X' && this.board[4]==='X' && this.board[7]==='X'){
-    console.log('Player 1 wins!')
+      alert('Player 1 wins!');
   } else if (this.board[1]==='O' && this.board[4]==='O' && this.board[7]==='O'){
-      console.log('Player 2 wins!')
+      alert('Player 2 wins!');
   } else if (this.board[2]==='X' && this.board[5]==='X' && this.board[8]==='X'){
-      console.log('Player 1 wins!')
+      alert('Player 1 wins!');
   } else if (this.board[2]==='O' && this.board[5]==='O' && this.board[8]==='O'){
-      console.log('Player 2 wins!')
+      alert('Player 2 wins!');
   } else if (this.board[0]==='X' && this.board[4]==='X' && this.board[8]==='X'){
-      console.log('Player 1 wins!')
+      alert('Player 1 wins!');
   } else if (this.board[0]==='O' && this.board[4]==='O' && this.board[8]==='O'){
-      console.log('Player 2 wins!')
+      alert('Player 2 wins!');
   } else if (this.board[2]==='X' && this.board[4]==='X' && this.board[6]==='X'){
-      console.log('Player 1 wins!')
-  } else if (this.board[2]==='O' && this.board[4]==='0' && this.board[6]==='0'){
-      console.log('Player 2 wins!')
+      alert('Player 1 wins!');
+  } else if (this.board[2]==='O' && this.board[4]==='O' && this.board[6]==='O'){
+      alert('Player 2 wins!');
+  } else if (this.turnCounter >=10){
+      alert('tie!');
   }
 };
-
 
 
 // like cat example, will first create boxes, then will use box to make rows/comlumns
 TicTacToeGameBoard.prototype.makeCell = function makeCell(cellIndex){
   var gameCell = $('<div>').addClass('box');
       gameCell.attr('id', cellIndex);
+      gameCell.data('index', cellIndex);
   //var index = gameCell.attr('id');
     return gameCell;
     //console.log(index)
@@ -100,33 +104,32 @@ TicTacToeGameBoard.prototype.makeBoard = function makeBoard(row, col){
 
   var scope = this;
     $('.box').on('click', function(e){
-        var cell = $(e.target);
-          scope.makeMove(  cell,  cell.attr('id')   )
+      //var index = $(this).data('index');
+          var cell = $(e.target);
+          var index = parseInt(cell.attr('id'));
+          scope.makeMove(  cell, index );
         });
   };
 //something that will have an event listener for the click, will assign value into square
 
 TicTacToeGameBoard.prototype.makeMove =  function makeMove(cell, index){
-//index = this.cell.attr('id')
-
-  if (this.board[index] === undefined){
-    if (this.turnCounter%2 === 0){
+    if (this.turnCounter%2 === 0 && this.board[index]=== undefined){
       this.board[index] = 'O';
-      cell.text('O');
-    } else {
+      cell.html("<img src='http://24.media.tumblr.com/tumblr_m320tlkm0Q1rue873o1_400.png'>");
+      this.turnCounter++;
+    } else if (this.turnCounter%2 !== 0 && this.board[index]=== undefined){
       this.board[index] = 'X';
-      cell.text('X');
-    }
-        this.turnCounter++;
-        console.log(this.turnCounter)
-    };
-    if(this.board[index] !== undefined){
+      cell.html("<img src = 'http://40.media.tumblr.com/7661bc36ea8dbdb8384d29288c90adf1/tumblr_nh9cz35tS51u6hgkxo1_500.png'>");
+      this.turnCounter++;
+    } else if(this.board[index] !== undefined){
       console.log('NOT HERE');
     }
-    return this.board;
-
+        //this.turnCounter++;
+        var gameBoard = this.board;
+        game.checkWin();
+        //game.checkTie();
 };
-console.log(this.board);
+
 
 
 
@@ -172,11 +175,12 @@ var game;
 */
 
 
+var game;
 $(document).ready(function(){
-  var game = new TicTacToeGameBoard();
+  game = new TicTacToeGameBoard();
   game.makeBoard(3, 3);
   game.playerInfo();
-
+  //game.checkWin();
 
   game.init( $('#center-section') );
 });

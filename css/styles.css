@@ -3,16 +3,29 @@ body {
   color: navajowhite;
   font-family: futura;
   font-weight: lighter;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .column{
   display: inline-block;
 }
 
+
+input{
+  font-family: futura;
+  font-size: 12px;
+}
+
 #header{
   text-align: center;
   margin: 3%;
   font-size: 30px;
+}
+
+img{
+  height: 160px;
+  width: auto;
 }
 
 #left-page-column{
@@ -23,6 +36,7 @@ body {
 
 #center-section{
   width: 60%;
+
 
 }
 
