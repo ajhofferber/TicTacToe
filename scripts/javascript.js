@@ -9,13 +9,8 @@
 
 // have the computer recognize when the board is full and no one has won and call it a tie
 
-/*
-var whosFirst = prompt('Hi player 1, what is your name?')
-var whosSecond = prompt('Hi player 2, what is your name?')
 
-var first = $('#first-player').innerHTML(whosFirst);
-var second = $('#second-player').innerHTML(whosSecond);
-*/
+
 //functions
 
 //constructor function that holds the game's abilities
@@ -35,29 +30,9 @@ TicTacToeGameBoard.prototype.playerInfo = function playerInfo(){
 }
 
 
-//something that will have an event listener for the click, will assign value into square
-TicTacToeGameBoard.prototype.makeMove =  function makeMove(cell, index){
-  if (this.board[index] === undefined){
-    if (this.turnCounter%2 === 0){
-      this.board[index] = 'O';
-      cell.text('O');
-    } else {
-      this.board[index] = 'X';
-      cell.text('X');
-    }
-        this.turnCounter++;
-        console.log(this.turnCounter)
-    };
-    if(this.board[index] !== undefined){
-      console.log(this.board[index]);
-      console.log('NOT HERE');
-    }
-    return this.board;
 
-};
 
 //function to check for each of the win states (column, row, diagonal)
-
 
 TicTacToeGameBoard.prototype.checkWin = function checkWin(makeMove){
   if (this.board[0]==='X' && this.board[1]==='X' && this.board[2]==='X'){
@@ -95,27 +70,15 @@ TicTacToeGameBoard.prototype.checkWin = function checkWin(makeMove){
   }
 };
 
-/*
-//theoretically, attacted a binder to the game box that will make an O
-TicTacToeGameBoard.prototype.bindX = function bindX(gameBox){
-  gameBox.on('click', (function() {
-      gameBox.append('X')
-    }));
-}
-//theoretically, attacted a binder to the game box that will make an O
-TicTacToeGameBoard.prototype.bindO = function bindO(gameBox){
-  gameBox.on('click', (function() {
-      gameBox.append('O')
-    }));
-}
-*/
+
 
 // like cat example, will first create boxes, then will use box to make rows/comlumns
 TicTacToeGameBoard.prototype.makeCell = function makeCell(cellIndex){
   var gameCell = $('<div>').addClass('box');
       gameCell.attr('id', cellIndex);
-
+  //var index = gameCell.attr('id');
     return gameCell;
+    //console.log(index)
 }
 
 // render a new board (function that will pass num row and num column)
@@ -139,11 +102,49 @@ TicTacToeGameBoard.prototype.makeBoard = function makeBoard(row, col){
     $('.box').on('click', function(e){
         var cell = $(e.target);
           scope.makeMove(  cell,  cell.attr('id')   )
+        });
+  };
+//something that will have an event listener for the click, will assign value into square
+
+TicTacToeGameBoard.prototype.makeMove =  function makeMove(cell, index){
+//index = this.cell.attr('id')
+
+  if (this.board[index] === undefined){
+    if (this.turnCounter%2 === 0){
+      this.board[index] = 'O';
+      cell.text('O');
+    } else {
+      this.board[index] = 'X';
+      cell.text('X');
+    }
+        this.turnCounter++;
+        console.log(this.turnCounter)
+    };
+    if(this.board[index] !== undefined){
+      console.log('NOT HERE');
+    }
+    return this.board;
+
+};
+console.log(this.board);
+
+
+
+      //  var index =  cell.attr('id');
+  /*      $(".box").click(function(e){
+          var cell = $(e.target);
+          cell.text.toggle("slow");
         })
-      };
+      };*/
+//};
 
+//this.cell
 
-
+$(".box").click(function(){
+       $(".box").text.toggle(1000, function(){
+           alert("The toggle() method is finished!");
+       });
+   });
 
 TicTacToeGameBoard.prototype.init = function init(domNode){
   this.gameBoard = this.makeBoard(this.width, this.height);
@@ -173,11 +174,11 @@ var game;
 
 $(document).ready(function(){
   var game = new TicTacToeGameBoard();
-  game.makeBoard(4,4);
+  game.makeBoard(3, 3);
   game.playerInfo();
 
 
-  game.init( $('#contents') );
+  game.init( $('#center-section') );
 });
 
 
