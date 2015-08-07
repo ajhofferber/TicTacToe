@@ -18,6 +18,7 @@ function TicTacToeGameBoard(){
   this.turnCounter = 1;
   this.board = new Array(9);
   var gameBoard = this.board;
+  var win = false;
 }
 
 
@@ -37,41 +38,49 @@ TicTacToeGameBoard.prototype.playerInfo = function playerInfo(){
 
 TicTacToeGameBoard.prototype.checkWin = function checkWin(gameBoard){
 
+
    if (this.board[0]==='X' && this.board[1]==='X' && this.board[2]==='X'){
-      alert('Player 1 wins!');
+      alert('DRAKE WINS!');
+      var win = true;
   } else if (this.board[0]==='O' && this.board[1]==='O' && this.board[2]==='O'){
-      alert('Player 2 wins!');
+      alert('KANYE WINS!');
   } else if (this.board[3]==='X' && this.board[4]==='X' && this.board[5]==='X'){
-      alert('Player 1 wins!');
+      alert('DRAKE WINS!');
   } else if (this.board[3]==='O' && this.board[4]==='O' && this.board[5]==='O'){
-      alert('Player 2 wins!');
+      alert('KANYE WINS!');
   } else if (this.board[6]==='X' && this.board[7]==='X' && this.board[8]==='X'){
-      alert('Player 1 wins!');
+      alert('DRAKE WINS!');
   } else if (this.board[6]==='O' && this.board[7]==='O' && this.board[8]==='O'){
-      alert('Player 2 wins!');
+      alert('KANYE WINS!');
   } else if (this.board[0]==='X' && this.board[3]==='X' && this.board[6]==='X'){
-      alert('Player 1 wins!');
+      alert('DRAKE WINS!');
   } else if (this.board[0]==='O' && this.board[3]==='O' && this.board[6]==='O'){
-      alert('Player 2 wins!');
+      alert('KANYE WINS!');
   } else if (this.board[1]==='X' && this.board[4]==='X' && this.board[7]==='X'){
-      alert('Player 1 wins!');
+      alert('DRAKE WINS!');
   } else if (this.board[1]==='O' && this.board[4]==='O' && this.board[7]==='O'){
-      alert('Player 2 wins!');
+      alert('KANYE WINS!');
   } else if (this.board[2]==='X' && this.board[5]==='X' && this.board[8]==='X'){
-      alert('Player 1 wins!');
+      alert('DRAKE WINS!');
   } else if (this.board[2]==='O' && this.board[5]==='O' && this.board[8]==='O'){
-      alert('Player 2 wins!');
+      alert('KANYE WINS!');
   } else if (this.board[0]==='X' && this.board[4]==='X' && this.board[8]==='X'){
-      alert('Player 1 wins!');
+      alert('DRAKE WINS!');
   } else if (this.board[0]==='O' && this.board[4]==='O' && this.board[8]==='O'){
-      alert('Player 2 wins!');
+      alert('KANYE WINS!');
   } else if (this.board[2]==='X' && this.board[4]==='X' && this.board[6]==='X'){
-      alert('Player 1 wins!');
+      alert('DRAKE WINS!');
   } else if (this.board[2]==='O' && this.board[4]==='O' && this.board[6]==='O'){
-      alert('Player 2 wins!');
+      alert('KANYE WINS!');
   } else if (this.turnCounter >=10){
       alert('tie!');
-  }
+  };
+
+  if (win === true){
+    $('#game-board').append("<img src ='http://i631.photobucket.com/albums/uu33/ricky_koolz_is_me/08103ia4.gif'>")
+  };
+
+
 };
 
 
@@ -119,7 +128,7 @@ TicTacToeGameBoard.prototype.makeMove =  function makeMove(cell, index){
       this.turnCounter++;
     } else if (this.turnCounter%2 !== 0 && this.board[index]=== undefined){
       this.board[index] = 'X';
-      cell.html("<img src = 'http://40.media.tumblr.com/7661bc36ea8dbdb8384d29288c90adf1/tumblr_nh9cz35tS51u6hgkxo1_500.png'>");
+      cell.html("<img src='http://40.media.tumblr.com/7661bc36ea8dbdb8384d29288c90adf1/tumblr_nh9cz35tS51u6hgkxo1_500.png'>");
       this.turnCounter++;
     } else if(this.board[index] !== undefined){
       console.log('NOT HERE');
