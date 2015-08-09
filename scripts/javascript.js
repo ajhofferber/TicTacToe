@@ -13,12 +13,12 @@
 
 //functions
 
-//constructor function that holds the game's abilities
+//constructor function that holds  the game's abilities
 function TicTacToeGameBoard(){
   this.turnCounter = 1;
   this.board = new Array(9);
-  var gameBoard = this.board;
-  var win = false;
+  this.oneWin = false;
+  this.twoWin = false;
 }
 
 
@@ -37,11 +37,10 @@ TicTacToeGameBoard.prototype.playerInfo = function playerInfo(){
 //function to check for each of the win states (column, row, diagonal)
 
 TicTacToeGameBoard.prototype.checkWin = function checkWin(gameBoard){
-
+//var winnerOne = $('<div>').addClass('outcome').text('PLAYER ONE WINS! YOU DID IT!')
 
    if (this.board[0]==='X' && this.board[1]==='X' && this.board[2]==='X'){
-      alert('DRAKE WINS!');
-      var win = true;
+    this.oneWin = true;
     //  $('#center-section').append("<img src ='http://i631.photobucket.com/albums/uu33/ricky_koolz_is_me/08103ia4.gif'>")
   } else if (this.board[0]==='O' && this.board[1]==='O' && this.board[2]==='O'){
       alert('KANYE WINS!');
@@ -77,7 +76,8 @@ TicTacToeGameBoard.prototype.checkWin = function checkWin(gameBoard){
       alert('tie!');
   };
 
-  if (win === true){
+  if (this.oneWin === true){
+    alert('DRAKE WINS');
   //  $('#center-section').append("<img src ='http://i631.photobucket.com/albums/uu33/ricky_koolz_is_me/08103ia4.gif'>")
 
   };
@@ -136,7 +136,7 @@ TicTacToeGameBoard.prototype.makeMove =  function makeMove(cell, index){
       console.log('NOT HERE');
     }
         //this.turnCounter++;
-        var gameBoard = this.board;
+        //var gameBoard = this.board;
         game.checkWin();
         //game.checkTie();
 };
@@ -165,27 +165,6 @@ $(".box").click(function(){
 //  domNode.append(this.gameBoard);
 //};
 
-
-
-
-
-
-
-  //can start
-  //can play
-  //make function calls off of the game board.
-//  ash.turnCounter
-//}
-//var game = new TicTacToeGameBoard;
-/*
-game.makeMove()
-game.checkWin()
-game.bindX()
-game.makeBoard( 3, 3)
-var game;
-*/
-
-
 var game;
 $(document).ready(function(){
   game = new TicTacToeGameBoard();
@@ -193,7 +172,7 @@ $(document).ready(function(){
   game.playerInfo();
   //game.checkWin();
 
-  game.init( $('#center-section') );
+  //game.init( $('#center-section') );
 });
 
 
