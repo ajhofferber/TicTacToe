@@ -1,5 +1,15 @@
 # TicTacToe
 
+- Do have a burning desire to play tic tac toe? Is it difficult for you to actually put down your computer or iPhone? Is the thought of disengaging from popular hip hop culture too much to even imagine?
+- If you answered yes to those three questions, look no further. The future of tic tac toe has arrived... Tic Tac YO!
+
+
+
+
+# Intro
+
+- Take turns against a friend placing rapper heads in squares. The first to get 3-in-a-row wins it all!
+
 
 ## UserStories
 

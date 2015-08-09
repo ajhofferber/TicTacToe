@@ -40,7 +40,7 @@ TicTacToeGameBoard.prototype.checkWin = function checkWin(gameBoard){
 //var winnerOne = $('<div>').addClass('outcome').text('PLAYER ONE WINS! YOU DID IT!')
 
    if (this.board[0]==='X' && this.board[1]==='X' && this.board[2]==='X'){
-    this.oneWin = true;
+    alert('DRAKE WINS');
     //  $('#center-section').append("<img src ='http://i631.photobucket.com/albums/uu33/ricky_koolz_is_me/08103ia4.gif'>")
   } else if (this.board[0]==='O' && this.board[1]==='O' && this.board[2]==='O'){
       alert('KANYE WINS!');
@@ -135,44 +135,17 @@ TicTacToeGameBoard.prototype.makeMove =  function makeMove(cell, index){
     } else if(this.board[index] !== undefined){
       console.log('NOT HERE');
     }
-        //this.turnCounter++;
-        //var gameBoard = this.board;
         game.checkWin();
-        //game.checkTie();
+
 };
 
-
-
-
-      //  var index =  cell.attr('id');
-  /*      $(".box").click(function(e){
-          var cell = $(e.target);
-          cell.text.toggle("slow");
-        })
-      };*/
-//};
-
-//this.cell
-
-$(".box").click(function(){
-       $(".box").text.toggle(1000, function(){
-           alert("The toggle() method is finished!");
-       });
-   });
-
-//TicTacToeGameBoard.prototype.init = function init(domNode){
-  //this.gameBoard = this.makeBoard(this.width, this.height);
-//  domNode.append(this.gameBoard);
-//};
 
 var game;
 $(document).ready(function(){
   game = new TicTacToeGameBoard();
   game.makeBoard(3, 3);
   game.playerInfo();
-  //game.checkWin();
 
-  //game.init( $('#center-section') );
 });
 
 
@@ -183,8 +156,5 @@ $(document).ready(function(){
 
 //ability to submit input of the player 1/player 2 names
 
-//functions to check for each of the win states (column, row, diagonal)
-
-//function to render board, based on how many columns or rows you want
 
 //assign distinct values to each of the players so that the computer can recognize
