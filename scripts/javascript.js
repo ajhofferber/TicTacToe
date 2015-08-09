@@ -42,6 +42,7 @@ TicTacToeGameBoard.prototype.checkWin = function checkWin(gameBoard){
    if (this.board[0]==='X' && this.board[1]==='X' && this.board[2]==='X'){
       alert('DRAKE WINS!');
       var win = true;
+    //  $('#center-section').append("<img src ='http://i631.photobucket.com/albums/uu33/ricky_koolz_is_me/08103ia4.gif'>")
   } else if (this.board[0]==='O' && this.board[1]==='O' && this.board[2]==='O'){
       alert('KANYE WINS!');
   } else if (this.board[3]==='X' && this.board[4]==='X' && this.board[5]==='X'){
@@ -77,7 +78,8 @@ TicTacToeGameBoard.prototype.checkWin = function checkWin(gameBoard){
   };
 
   if (win === true){
-    $('#game-board').append("<img src ='http://i631.photobucket.com/albums/uu33/ricky_koolz_is_me/08103ia4.gif'>")
+  //  $('#center-section').append("<img src ='http://i631.photobucket.com/albums/uu33/ricky_koolz_is_me/08103ia4.gif'>")
+
   };
 
 
@@ -158,10 +160,10 @@ $(".box").click(function(){
        });
    });
 
-TicTacToeGameBoard.prototype.init = function init(domNode){
-  this.gameBoard = this.makeBoard(this.width, this.height);
-  domNode.append(this.gameBoard);
-};
+//TicTacToeGameBoard.prototype.init = function init(domNode){
+  //this.gameBoard = this.makeBoard(this.width, this.height);
+//  domNode.append(this.gameBoard);
+//};
 
 
 
